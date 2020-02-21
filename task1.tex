@@ -9,6 +9,9 @@
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
+
+
+\usepackage[normalem]{ulem}
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
 \title{Task 1}								% Title
@@ -50,7 +53,7 @@
       Yong Hao Chen\\
       Yashiv Fakir\\
       Adam Gild\\
-      Jason Hildebrand\\
+      Jason Hillebrand\\
       Lindokuhle Lubisi\\
       Iviwe Malotana\\
       Samuel Mbiya
@@ -88,9 +91,28 @@
 \section{End User Specifications}
 
 \newpage
-\section{Sensing Subsystem}
+\section{Sensing Subsystem} 
 
-\newpage
+% Please add the following required packages to your document preamble:
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+  \begin{center}
+    
+
+  \begin{table}[htp]
+    \hskip-2.2cm\begin{tabular}{|llll|}
+  \hline
+  {\underline{ \textbf{SENSING SYSTEM}}} &                                                                            &                      &                                                                                                                                                                                                                                                                                                                                                                                                \\ \hline
+  \textbf{Device used:}         & \textbf{\begin{tabular}[c]{@{}l@{}}Communication \\ Standard\end{tabular}} & \textbf{Sample Rate} & \textbf{Reason for sampling}                                                                                                                                                                                                                                                                                                                                                                   \\
+  \textbf{GY-91 10DOF:}         &                                                                            &                      &                                                                                                                                                                                                                                                                                                                                                                                                \\
+  Magnetometer                  & I2C                                                                        & 100Hz                & \begin{tabular}[c]{@{}l@{}}To measure the change in magnetic \\ field around the current carrying lines.\\  This is to indicate if one or more of \\ the lines has been displaced.\end{tabular}                                                                                                                                                                                                \\
+  Accelerometer                 & I2C                                                                        & 1000Hz               & \begin{tabular}[c]{@{}l@{}}Measure the frequency response of \\ the pole as it moves through space \\ due to wind excitation. This is to \\ indicate the physical wear and changes \\ to the pole as a possible warning for\\  a future breakdown.\\ \\ A large spike in acceleration will \\ indicate the pole's movement and \\ collisions with objects \\ (i.e motor vehicle).\end{tabular} \\
+  Gyroscope                     & I2C                                                                        & 100Hz                & \begin{tabular}[c]{@{}l@{}}Measure if the pole has changed \\ orientation.\end{tabular}                                                                                                                                                                                                                                                                                                        \\
+  Barometer                     & I2C                                                                        & 60Hz                 & \begin{tabular}[c]{@{}l@{}}Measure temperature and elevation \\ above sea level. A drastic increase in \\ temperature warns of fire threats to\\  the pole, altitude measurement can also\\ be used to confirm an incident on the pole.\end{tabular}                                                                                                                                           \\ \hline
+  \end{tabular}
+  \end{table}
+\end{center}
+\newpage  
 \section{Micro-controller Subsystem}
 
 \newpage
