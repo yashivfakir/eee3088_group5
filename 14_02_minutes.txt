@@ -1,0 +1,42 @@
+14 Febuary  12:00
+
+Present:
+Torsten.B	Yashiv.F	Jason.H
+Ebrahim.A	Samual.M	Yong.H
+Adam.G
+
+Excused:
+Lindokuhle.L
+
+Absent:
+Iviwe.M
+
+Topics:
+
+1. Torsten Babl elected as group leader.
+
+2. Subsections Allocated:
+
+	Power:
+		Yashiv
+		Yong
+		
+	
+	Micro-controller:
+		Ebrahim
+		Adam
+
+	Wireless:
+		Samual
+		Torsten
+
+	Sensing: 
+		Jason
+		(Iviwe) (Assigned as was not present at meeting)
+	Unasigned:
+		Lindokuhle 
+
+3. Communication and work space for project decided upon. Each person is responisble for their own education to be able to use the tools that will be used in the project they are not familiar with. A channel will be set up in Microsoft teams to help anyone struggling.  
+	Microsoft Teams to be used for all project communication to streamline communication.
+	Github repsitory to be used to house all project work.
+	Project to be typed and compiled in LaTeX document in the Git repository.
