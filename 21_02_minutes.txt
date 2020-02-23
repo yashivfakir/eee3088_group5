@@ -1,0 +1,41 @@
+21 Febuary  13:00
+
+Present:
+Torsten.B	Yashiv.F	Jason.H
+Iviwe.M		Samual.M	Lindokuhle.L
+Adam.G			
+
+
+Excused:
+Yong.H		Ebrahim.A
+ 
+
+Topics:
+
+1. General Design:
+	 Sensing subsystem design decided upon:
+		-Accelerometer
+		-Magnetometer
+		-Gyroscope
+		-Barometer
+		-Line voltage
+
+	Micro-controller:
+		-Have a low power mode
+		-Communicate I2C method
+		-Low sampling rate required 
+
+		
+	Power supply:
+		-Draw power from the 6.6kV to charge a battery
+		-The subsystems will draw power from the battery directly, battery charging status and levels to be monitored by micro-controller.
+
+2. Write up:
+	Each sub-team is to complete their respective sections of the write up.
+	
+	Subsections to be submitted by the 23rd of February at 14h00.
+
+3. General acceptance tests:
+
+	All to contribute to acceptance test section. Use a potential fault that the system is to detect and state the systems response to this.
+	
