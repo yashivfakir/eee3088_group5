@@ -96,18 +96,19 @@ Node - A single sensing device on a pole that meshes with other nodes to form th
 
 The aim of the comissioned sensing and reporting system is to identify and report faults on 33kV transmission lines 
 that do not trigger an earth leakage or overcurrent fault condition on existing switching systems, yet still pose 
-a safety risk to the public. Such faults are often caused by storm damage, motor/construction vehicle impact and malicious
-damage to public property generally caused by theft. In addition to post-fault reporting the early recognition of 
-structural degridation can potentially save the Utility money by allowing planned and targeted maintainence to prevent 
+a safety risk to the public. Such faults are often caused by storm damage, motor/construction vehicle impact and 
+malicious damage to public property generally caused by theft. In addition to post-fault reporting the early recognition
+of structural degridation can potentially save the Utility money by allowing planned and targeted maintainence to prevent 
 future unexpected faults.
 
 \subsection{Definition of desired detactable fault conditions}
 The following fault conditoins are desirted to be detected by the comissioned system:
 
-\begin{table}[!ht]
-  \caption{Definition of desired detactable fault conditions}
-  \begin{center}
-  \begin{tabular}{|l|l|l|}
+\begin{center}
+\begin{table}[htp]
+  %\caption{Definition of desired detactable fault conditions}
+  
+  \hskip-2.2cm\begin{tabular}{|p{4cm}|p{4cm}|p{10cm}|}
       \hline
       \textbf{Image} & \textbf{Name} & \textbf{Description} \\
       \hline
@@ -122,10 +123,27 @@ The following fault conditoins are desirted to be detected by the comissioned sy
        & Fire in vicinity of transmission line & \\
       \hline
 
-  \end{tabular}      
-\end{center}
+  \end{tabular}    
+
 \label{tab:summary_measurments}
 \end{table}
+\end{center}
+
+% TODO: Put these into tables later on
+
+\subsection{Reporting requirements for faults}
+Faults that compromise the safety of the public should be reported as fast as possible and in no more than 10 minutes.
+
+Fault conditions that  precede an immminent future failure should be reported within 24 hours of the condition being
+detected.
+
+\subsection{Durability and cost of operation}
+The sensing devices (nodes) should not be required to be serviced for 10 years after installation.
+
+The nodes should not rely on subsription services (such as GSM) for operation.
+
+\subsection{Component cost}
+A bill of materials of single device should exceed 250 ZAR.
 
 \newpage
 \section{Sensing Subsystem} 
@@ -139,20 +157,39 @@ The following fault conditoins are desirted to be detected by the comissioned sy
   \begin{table}[htp]
     \hskip-2.2cm\begin{tabular}{|llll|}
   \hline
-  {\underline{ \textbf{SENSING SYSTEM}}} &                                                                            &                      &                                                                                                                                                                                                                                                                                                                                                                                                \\ \hline
   \textbf{Device used:}         & \textbf{\begin{tabular}[c]{@{}l@{}}Communication \\ Standard\end{tabular}} & \textbf{Sample Rate} & \textbf{Reason for sampling}                                                                                                                                                                                                                                                                                                                                                                   \\
-  \textbf{}         &                                                                            &                      &                                                                                                                                                                                                                                                                                                                                                                                                \\
+  \hline
+    \textbf{}         &                                                                            &                      &                                                                                                                                                                                                                                                                                                                                                                                                \\
   Magnetometer                  & I2C                                                                        & 100Hz                & \begin{tabular}[c]{@{}l@{}}To measure the change in magnetic \\ field around the current carrying lines.\\  This is to indicate if one or more of \\ the lines has been displaced.\end{tabular}                                                                                                                                                                                                \\
   Accelerometer                 & I2C                                                                        & 1000Hz               & \begin{tabular}[c]{@{}l@{}}Measure the frequency response of \\ the pole as it moves through space \\ due to wind excitation. This is to \\ indicate the physical wear and changes \\ to the pole as a possible warning for\\  a future breakdown.\\ \\ A large spike in acceleration will \\ indicate the pole's movement and \\ collisions with objects \\ (i.e motor vehicle).\end{tabular} \\
   Gyroscope                     & I2C                                                                        & 100Hz                & \begin{tabular}[c]{@{}l@{}}Measure if the pole has changed \\ orientation.\end{tabular}                                                                                                                                                                                                                                                                                                        \\
   Barometer                     & I2C                                                                        & 60Hz                 & \begin{tabular}[c]{@{}l@{}}Measure temperature and elevation \\ above sea level. A drastic increase in \\ temperature warns of fire threats to\\  the pole, altitude measurement can also\\ be used to confirm an incident on the pole.\end{tabular}                                                                                                                                           \\ \hline
   \end{tabular}
   \end{table}
-\end{center}
-\newpage  
+\end{center} 
 \section{Micro-controller Subsystem}
 
-\newpage
+\section{Wireless Subsystem}
+
+\begin{center}
+  \begin{table}[htp]
+    %\caption{Definition of desired detactable fault conditions}
+    
+    \hskip-2.2cm\begin{tabular}{|p{8cm}|p{10cm}|}
+        \hline
+        \textbf{Specification} & \textbf{Description} \\
+        \hline
+        One & Three \\
+
+        \hline
+
+    \end{tabular}    
+    
+    \label{tab:summary_measurments}
+   \end{table}
+\end{center}
+
+
 \section{Power Supply Subsystem}
 
 \newpage
