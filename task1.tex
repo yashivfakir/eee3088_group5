@@ -10,6 +10,8 @@
 \usepackage{fancyhdr}
 \usepackage{vmargin}
 
+\usepackage{opensans} 
+\renewcommand{\familydefault}{\sfdefault}
 
 \usepackage[normalem]{ulem}
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -32,15 +34,16 @@
 
 \begin{document}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{titlepage}
 	\centering
     \vspace*{0.5 cm}
     \includegraphics[scale = 0.75]{UCT.jpg}\\[1.0 cm]	% University Logo
-    \textsc{\LARGE University of Cape Town}\\[1.0 cm]	% University Name
-	\textsc{\Large EEE3088F}\\[0.5 cm]				% Course Code
-	\textsc{\large Group 5}\\[0.5 cm]				% Course Name
+    \LARGE University of Cape Town\\[1.0 cm]	% University Name
+	\Large EEE3088F\\				% Course Code
+	\large Group 5\\				% Course Name
 	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
 	{ \huge \bfseries \thetitle}\\
 	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
@@ -179,7 +182,10 @@ A bill of materials of single device should exceed 250 ZAR.
         \hline
         \textbf{Specification} & \textbf{Description} \\
         \hline
-        One & Three \\
+        Communication to main micro-controller & Asyncronous serial communication. Likely USART 3.3V logic levels at low
+        baud rates. (4800 or 9600 baud) \\
+
+
 
         \hline
 
