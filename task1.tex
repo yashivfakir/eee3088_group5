@@ -88,11 +88,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Definitions}
+
+Node - A single sensing device on a pole that meshes with other nodes to form the sensing network
+
 \section{End User Specifications}
 
 The aim of the comissioned sensing and reporting system is to identify and report faults on 33kV transmission lines 
 that do not trigger an earth leakage or overcurrent fault condition on existing switching systems, yet still pose 
-safety risk to the public. Such faults are often caused by storm damage, motor/construction vehicle impact and malicious
+a safety risk to the public. Such faults are often caused by storm damage, motor/construction vehicle impact and malicious
 damage to public property generally caused by theft. In addition to post-fault reporting the early recognition of 
 structural degridation can potentially save the Utility money by allowing planned and targeted maintainence to prevent 
 future unexpected faults.
@@ -100,7 +104,28 @@ future unexpected faults.
 \subsection{Definition of desired detactable fault conditions}
 The following fault conditoins are desirted to be detected by the comissioned system:
 
+\begin{table}[!ht]
+  \caption{Definition of desired detactable fault conditions}
+  \begin{center}
+  \begin{tabular}{|l|l|l|}
+      \hline
+      \textbf{Image} & \textbf{Name} & \textbf{Description} \\
+      \hline
+      One & Phase failure & Loss of energy of one or more lines due to faults between the node and the supply \\
+       & Line detachment & One or more lines are detachted from the isolator on the A-frame while the pole remains
+       upright \\
+       & Pole dislodged and/or rotated & Pole is no longer upright or loses orientated through forces on the lines or pole itself \\
+       & Pole failure & The structure of the pole is compromised due to material failure \\
+       & Pole fracture & The pole remains upright, the strength is however compromised due to any number of fractures \\
+       & Pole and node failure due to damaging force & A damaging force is strong enough to damage both the pole and the
+       node\\
+       & Fire in vicinity of transmission line & \\
+      \hline
 
+  \end{tabular}      
+\end{center}
+\label{tab:summary_measurments}
+\end{table}
 
 \newpage
 \section{Sensing Subsystem} 
