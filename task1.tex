@@ -118,6 +118,48 @@
 \newpage
 \section{Power Supply Subsystem}
 
+\begin{center}
+\begin{table}[tbh]
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Design\\   Parameters\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{Rating}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Components and\\   Interface Requirement\end{tabular}}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Power\\   under max load\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1 W\\   under load\end{tabular} &
+  n/a \\ \hline
+Stable supply voltage &
+  5 V input supply &
+  Power source \\ \hline
+Step down the supply voltage &
+  3.3 V step down supply &
+  DC-DC converter \\ \hline
+DC supply voltages &
+  5 V and 3.3 V DC &
+  \begin{tabular}[c]{@{}l@{}}Fed into PCB (2 supply lines\\   on PCB)\end{tabular} \\ \hline
+Long lasting power source &
+  5 V rating &
+  n/a \\ \hline
+\begin{tabular}[c]{@{}l@{}}Some way to recharge the power\\   source\end{tabular} &
+  Possibly AC to DC &
+  \begin{tabular}[c]{@{}l@{}}Solar or Directly from pole\\   line\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Choose affordable but\\   efficient components\end{tabular} &
+  n/a &
+  \begin{tabular}[c]{@{}l@{}}internal PCB and external\\   source\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}A rechargeable power storage\\   source\end{tabular} &
+  minimum 500 cycles &
+  Power source \\ \hline
+\begin{tabular}[c]{@{}l@{}}Components should not be\\   over-sized\end{tabular} &
+  n/a &
+  Fit into packaging \\ \hline
+\begin{tabular}[c]{@{}l@{}}Regulate from AC to DC\\   effectively\end{tabular} &
+  19 kV/11 kV to 5 V &
+  \begin{tabular}[c]{@{}l@{}}From Pole line to the power\\   source\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+
 \newpage
 \section{Acceptance Test Procedures}
 
