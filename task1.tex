@@ -99,26 +99,26 @@ Node - A single sensing device on a pole that meshes with other nodes to form th
 
 \section{End User Specifications}
 
-The aim of the comissioned sensing and reporting system is to identify and report faults on 33kV transmission lines 
+The aim of the commissioned sensing and reporting system is to identify and report faults on 33kV transmission lines 
 that do not trigger an earth leakage or overcurrent fault condition on existing switching systems, yet still pose 
 a safety risk to the public. Such faults are often caused by storm damage, motor/construction vehicle impact and 
 malicious damage to public property generally caused by theft. In addition to post-fault reporting the early recognition
-of structural degridation can potentially save the Utility money by allowing planned and targeted maintainence to prevent 
+of structural degradation can potentially save the Utility money by allowing planned and targeted maintenance to prevent 
 future unexpected faults.
 
-\subsection{Definition of desired detactable fault conditions}
-The following fault conditoins are desirted to be detected by the comissioned system:
+\subsection{Definition of desired detectable fault conditions}
+The following fault conditions are desired to be detected by the commissioned system:
 
 \begin{center}
 \begin{table}[htp]
-  %\caption{Definition of desired detactable fault conditions}
+  %\caption{Definition of desired detectable fault conditions}
   
   \hskip-2.2cm\begin{tabular}{|p{4cm}|p{4cm}|p{10cm}|}
       \hline
       \textbf{Image} & \textbf{Name} & \textbf{Description} \\
       \hline
       One & Phase failure & Loss of energy of one or more lines due to faults between the node and the supply \\
-       & Line detachment & One or more lines are detachted from the isolator on the A-frame while the pole remains
+       & Line detachment & One or more lines are detached from the isolator on the A-frame while the pole remains
        upright \\
        & Pole dislodged and/or rotated & Pole is no longer upright or loses orientated through forces on the lines or pole itself \\
        & Pole failure & The structure of the pole is compromised due to material failure \\
@@ -139,13 +139,13 @@ The following fault conditoins are desirted to be detected by the comissioned sy
 \subsection{Reporting requirements for faults}
 Faults that compromise the safety of the public should be reported as fast as possible and in no more than 10 minutes.
 
-Fault conditions that  precede an immminent future failure should be reported within 24 hours of the condition being
+Fault conditions that  precede an imminent future failure should be reported within 24 hours of the condition being
 detected.
 
 \subsection{Durability and cost of operation}
 The sensing devices (nodes) should not be required to be serviced for 10 years after installation.
 
-The nodes should not rely on subsription services (such as GSM) for operation.
+The nodes should not rely on subscription services (such as GSM) for operation.
 
 \subsection{Component cost}
 A bill of materials of single device should exceed 250 ZAR.
@@ -205,16 +205,16 @@ The chosen uC: \underline{STM32F373C8}\\
 
 \begin{center}
   \begin{table}[!htb]
-    %\caption{Definition of desired detactable fault conditions}
+    %\caption{Definition of desired detectable fault conditions}
     
     \hskip-2.2cm\begin{tabular}{|p{8cm}|p{10cm}|}
         \hline
         \textbf{Specification} & \textbf{Description} \\
         \hline
-        Communication to main micro-controller & Asyncronous serial communication. Likely USART 3.3V logic levels at low
+        Communication to main micro-controller & Asynchronous serial communication. Likely USART 3.3V logic levels at low
         baud rates. (4800 or 9600 baud) \\[0.3cm]
         
-        RF hardware components & IoT transciever module simialr to the Ubiik Weightless End Device Module \\[0.3cm]
+        RF hardware components & IoT transceiver module similar to the Ubiik Weightless End Device Module \\[0.3cm]
         RF band used & 868.0 - 868.6 MHz band allocated by ICASA for Non-specific Short-Range-Devices (SRDs) limited to 
         25mW (14dBm) and duty cycles $<$1\%. \\[0.3cm]
         Antenna system & 868 MHz dipole antenna printed onto the main PCB1 \\[0.3cm]
@@ -243,11 +243,11 @@ The chosen uC: \underline{STM32F373C8}\\
         \textbf{Specification} & \textbf{Data} & \textbf{Interface} \\
         \hline
         Must be able to supply the needed power to all the sub-systems & Rated Power & Analogue outputs to uC for supply voltage \\[0.3cm]
-        Disconnect power to unused sub-systems & Pre-programmed microcontroller instructions & Wireless and uC sub-systems\\[0.3cm]
+        Disconnect power to unused sub-systems & Pre-programmed micro-controller instructions & Wireless and uC sub-systems\\[0.3cm]
         At least one backup supply is needed & Rated Power & Power supply rails\\[0.3cm]
         Should be able to withstand extreme conditions i.e. fire, thunderstorms, heat waves etc. & None & Exterior hardware\\[0.3cm]
         Should not be too big. The weight of the component is important & Specified final dimensions & None\\[0.3cm]
-        Supply the correct voltages to the microcontroller and sensors & Rated voltages & None\\[0.3cm]
+        Supply the correct voltages to the micro-controller and sensors & Rated voltages & None\\[0.3cm]
         Inexpensive materials to be used & Total BOM budget & None\\[0.3cm]
         Simple materials are to be used to ease repairs and maintenance & None & None \\[0.3cm]
 
@@ -289,7 +289,7 @@ The chosen uC: \underline{STM32F373C8}\\
 \subsection{Wireless}
 \begin{center}
   \begin{table}[!htb]
-    %\caption{Definition of desired detactable fault conditions}
+    %\caption{Definition of desired detectable fault conditions}
     
     \hskip-2.2cm\begin{tabular}{|p{8cm}|p{10cm}|}
         \hline
@@ -325,7 +325,7 @@ The chosen uC: \underline{STM32F373C8}\\
 -\underline{Environmental temperature test:} During operation the uC could experience either high or low temperatures , as well as sharp temperature fluctuations depending on the location of the device. In order to test this case , the device should be tested against three cases (heating,cooling and sharp temperature gradients).\\
 \\
 -\underline{Rain test:} Water and wind might be introduced to the uC system in rainy/stormy weather if the package is compromised.The PCB should be protected with a hydrophobic coating. The ability for the device to stay operational during these periods would then be assured. Use laboratory UV light, wind and rain sources to test resistance against stormy conditions.\\
-
+\newpage
 \subsection{Power supply}
 \begin{center}
   \begin{table}[!htb]
@@ -336,7 +336,11 @@ The chosen uC: \underline{STM32F373C8}\\
         \textbf{Test} & \textbf{Pass criteria} \\
         \hline
 
-        One & Two \\
+        Overvoltage & The proximity of induction coils to the transmission line does not cause capacitive
+        overvoltage in the main system \\[0.3cm]
+        Power failure / load shedding & The system is able to stay online for 3 hours in the event of a power outage \\[0.3cm]
+        Battery degradation & The system is able to function on reduced battery capacity which can be expected after 10 years of service \\[0.3cm]
+
 
         \hline
 
@@ -356,7 +360,11 @@ The chosen uC: \underline{STM32F373C8}\\
         \textbf{Test} & \textbf{Pass criteria} \\
         \hline
 
-        One & Two \\
+        EM noise resilience & The complete system is able to function in realistic electromagnetic environments\\[0.3cm]
+        Weather resilience & The system is able to function under adverse weather conditions \\[0.3cm]
+        Node failure resilience & The system remains functional with two or more nodes disabled \\[0.3cm]
+        False positive rate & In a realistic test environment the false positive reporting rate is less than 1 in 1000 cases\\[0.3cm]
+
 
         \hline
 
