@@ -151,7 +151,8 @@ The nodes should not rely on subsription services (such as GSM) for operation.
 A bill of materials of single device should exceed 250 ZAR.
 
 \newpage
-\section{Sensing Subsystem} 
+\section{Data interface requirements}
+\subsection{Sensing Subsystem} 
 
 % Please add the following required packages to your document preamble:
 % \usepackage[normalem]{ulem}
@@ -172,7 +173,7 @@ A bill of materials of single device should exceed 250 ZAR.
   \end{tabular}
   \end{table}
 \end{center} 
-\section{Micro-controller Subsystem}
+\subsection{Micro-controller Subsystem}
 Due to the requirements for memory in the system, a 32-bit microprocessor will be used for data capture, processing and information transmission. A compromise to 16/8 bit processor will not be necessary as lower priced 32-bit microprocessors are priced at around R12, 
 a relatively small fraction of the total budget per unit.\\
 The chosen uC: \underline{STM32F373C8}\\
@@ -192,7 +193,7 @@ The chosen uC: \underline{STM32F373C8}\\
                      & \textit{Low power modes:}             & Sleep, Stop, Standby                                                                                                                  \\ \cline{2-3} 
                      & \textit{Clock:}                       & 4 to 32 MHz crystal oscillator                                                                                                        \\ \cline{2-3} 
                      &\textit{ADCs:}                        & Three 16-bit Sigma Delta ADCs                                                                                                         \\ \cline{2-3} 
-                     & \multirow{5}{*}{\textit{Interfaces:}} & \begin{tabular}[c]{@{}l@{}}Two I\textasciicircum{}2\$Cs supporting Fast Mode Plus\\  (1 Mbit/s) with 20 mA current sink.\end{tabular} \\ \cline{3-3} 
+                     & \multirow{5}{*}{\textit{Interfaces:}} & \begin{tabular}[c]{@{}l@{}}Two I2Cs supporting Fast Mode Plus\\  (1 Mbit/s) with 20 mA current sink.\end{tabular} \\ \cline{3-3} 
                      &                              & Three USARTs supporting synchronous mode                                                                                              \\ \cline{3-3} 
                      &                              & \begin{tabular}[c]{@{}l@{}}Three SPIs (18 Mbit/s) with 4 to 16\\  programmable bit frames\end{tabular}                                \\ \cline{3-3} 
                      &                              & HDMI-CEC bus interface                                                                                                                \\ \cline{3-3} 
@@ -200,7 +201,7 @@ The chosen uC: \underline{STM32F373C8}\\
   \end{longtable}
 
 
-\section{Wireless Subsystem}
+\subsection{Wireless Subsystem}
 
 \begin{center}
   \begin{table}[!htb]
@@ -231,7 +232,7 @@ The chosen uC: \underline{STM32F373C8}\\
 \end{center}
 
 
-\section{Power Supply Subsystem}
+\subsection{Power Supply Subsystem}
 
 \begin{center}
   \begin{table}[!htb]
@@ -270,7 +271,12 @@ The chosen uC: \underline{STM32F373C8}\\
         \textbf{Test} & \textbf{Pass criteria} \\
         \hline
 
-        One & Two \\
+        Phase failure & The magnetometer reading reliably indicates the loss of power in the phase\\[0.3cm]
+        Line detached & The magnetometer reading reliably indicates the loss of power in the phase\\[0.3cm]
+        Pole dislodged & The accelerometer and gyroscope indicate a change in pole orientation\\[0.3cm]
+        Pole failure, lying flat & The accelerometer and gyroscope indicate that the pole has fallen\\[0.3cm]
+        Pole failure, top section upright & The accelerometer indicates that the pole has fallen\\[0.3cm]
+        Pole fracture & The accelerometer indicates a significant change in the resonant frequency of the pole \\[0.3cm]
 
         \hline
 
@@ -290,7 +296,13 @@ The chosen uC: \underline{STM32F373C8}\\
         \textbf{Test} & \textbf{Pass criteria} \\
         \hline
 
-        One & Two \\
+        Reporting latency & A fault from various points in the transmission line takes no longer than 10 minutes to be
+        reported \\[0.3cm]
+        Reporting overload & Any number of concurrent faults does not hinder the highest priority fault to be reported to
+        the distribution station \\[0.3cm]
+        Node failure redundancy & Two consecutive node failures to not break the line of communication to the
+        distribution station \\[0.3cm]
+
 
         \hline
 
@@ -301,24 +313,18 @@ The chosen uC: \underline{STM32F373C8}\\
   \end{center}
 
 \subsection{Micro-controller}
-\begin{center}
-  \begin{table}[!htb]
-    %\caption{Definition of desired detactable fault conditions}
-    
-    \hskip-2.2cm\begin{tabular}{|p{8cm}|p{10cm}|}
-        \hline
-        \textbf{Test} & \textbf{Pass criteria} \\
-        \hline
 
-        One & Two \\
-
-        \hline
-
-      \end{tabular}    
-      
-      \label{tab:summary_measurments}
-     \end{table}
-  \end{center}
+-\underline{Processing capabilities test:} The uC needs to be able to process 5 sets of input data (main voltage source, backup voltage source, accelerometer, magnetometer, temperature sensor) within 2 seconds consistently for long periods of time (potentially weeks/months) without overheating or degrading(too much). Run a stress test on the uC with the maximum load capable from the system.\\
+\\
+-\underline{Fail case operation testing:} The uC needs to be be able to continue functioning even with a break or deformation in the pole, ie placement and packaging needs to ensure that the uC sub-system can withstand the forces applied on it during this case of failure.Test the device against impulse forces with increasing strength. This would allow for comparison with the required strength of the chip.\\
+\\
+-\underline{Synchronization test:} The ADC's transmission rate of data needs to stay in sync with the digital readings from the accelerometer and magnetometer such that the fault detection packages are used efficiently on all 5 data sets, rather than 1 by 1. Test by running ranges of possible data through all 5 data channels, including analog signals at similar frequencies to the sensors and voltage sources, and testing that processing is done synchronously.\\
+\\
+- \underline{Storage test:} The data capture and storage of the uC sub-system need to be tested.Input data needs to be recorded accurately within certain margins of accuracy. Test by feeding predefined signals into the sub-system and reading the values stored in storage (flash storage) ,comparing for the accuracy expected from the system.\\ 
+\\
+-\underline{Environmental temperature test:} During operation the uC could experience either high or low temperatures , as well as sharp temperature fluctuations depending on the location of the device. In order to test this case , the device should be tested against three cases (heating,cooling and sharp temperature gradients).\\
+\\
+-\underline{Rain test:} Water and wind might be introduced to the uC system in rainy/stormy weather if the package is compromised.The PCB should be protected with a hydrophobic coating. The ability for the device to stay operational during these periods would then be assured. Use laboratory UV light, wind and rain sources to test resistance against stormy conditions.\\
 
 \subsection{Power supply}
 \begin{center}
