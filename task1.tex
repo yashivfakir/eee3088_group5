@@ -9,6 +9,8 @@
 \usepackage{parskip}
 \usepackage{fancyhdr}
 \usepackage{vmargin}
+\usepackage{longtable}
+\usepackage{multirow}
 
 \usepackage{opensans} 
 \renewcommand{\familydefault}{\sfdefault}
@@ -171,11 +173,37 @@ A bill of materials of single device should exceed 250 ZAR.
   \end{table}
 \end{center} 
 \section{Micro-controller Subsystem}
+Due to the requirements for memory in the system, a 32-bit microprocessor will be used for data capture, processing and information transmission. A compromise to 16/8 bit processor will not be necessary as lower priced 32-bit microprocessors are priced at around R12, 
+a relatively small fraction of the total budget per unit.\\
+The chosen uC: \underline{STM32F373C8}\\
+
+\begin{longtable}[c]{|l|l|l|}
+  \hline
+  \textbf{Processor}          & \multicolumn{2}{l|}{\textbf{Specifications}}                                                                                                                                  \\ \hline
+  \endfirsthead
+  %
+  \endhead
+  %
+  \multirow{13}{*}{STM32F373C8} & Core:                        & ARM®32-bit Cortex®-M4 CPU                                                                                                             \\ \cline{2-3}
+                     & \textit{Frequency:}                   & Up to 72Mhz                                                                                                                           \\ \cline{2-3} 
+                     & \textit{Storage:}                     & \begin{tabular}[c]{@{}l@{}}64 to 256 Kbytes of Flash memory \\ (128Kbytes chosen for this device)\end{tabular}                        \\ \cline{2-3} 
+                     & \textit{Voltage range:}               & 2.0 to 3.6 V                                                                                                                          \\ \cline{2-3} 
+                     & \textit{Voltage detector:}            & Programmable voltage detector (PVD)                                                                                                   \\ \cline{2-3} 
+                     & \textit{Low power modes:}             & Sleep, Stop, Standby                                                                                                                  \\ \cline{2-3} 
+                     & \textit{Clock:}                       & 4 to 32 MHz crystal oscillator                                                                                                        \\ \cline{2-3} 
+                     &\textit{ADCs:}                        & Three 16-bit Sigma Delta ADCs                                                                                                         \\ \cline{2-3} 
+                     & \multirow{5}{*}{\textit{Interfaces:}} & \begin{tabular}[c]{@{}l@{}}Two I\textasciicircum{}2\$Cs supporting Fast Mode Plus\\  (1 Mbit/s) with 20 mA current sink.\end{tabular} \\ \cline{3-3} 
+                     &                              & Three USARTs supporting synchronous mode                                                                                              \\ \cline{3-3} 
+                     &                              & \begin{tabular}[c]{@{}l@{}}Three SPIs (18 Mbit/s) with 4 to 16\\  programmable bit frames\end{tabular}                                \\ \cline{3-3} 
+                     &                              & HDMI-CEC bus interface                                                                                                                \\ \cline{3-3} 
+                     &                              & USB 2.0 full speed interface                                                                                                          \\ \hline
+  \end{longtable}
+
 
 \section{Wireless Subsystem}
 
 \begin{center}
-  \begin{table}[htp]
+  \begin{table}[!htb]
     %\caption{Definition of desired detactable fault conditions}
     
     \hskip-2.2cm\begin{tabular}{|p{8cm}|p{10cm}|}
@@ -183,9 +211,16 @@ A bill of materials of single device should exceed 250 ZAR.
         \textbf{Specification} & \textbf{Description} \\
         \hline
         Communication to main micro-controller & Asyncronous serial communication. Likely USART 3.3V logic levels at low
-        baud rates. (4800 or 9600 baud) \\
-
-
+        baud rates. (4800 or 9600 baud) \\[0.3cm]
+        
+        RF hardware components & IoT transciever module simialr to the Ubiik Weightless End Device Module \\[0.3cm]
+        RF band used & 868.0 - 868.6 MHz band allocated by ICASA for Non-specific Short-Range-Devices (SRDs) limited to 
+        25mW (14dBm) and duty cycles $<$1\%. \\[0.3cm]
+        Antenna system & 868 MHz dipole antenna printed onto the main PCB1 \\[0.3cm]
+        Protocol & The open IoT network standard Weightless-P will be used under the Ubiik hardware
+        implementation \\[0.3cm]
+        Network topology & A peer to peer (P2P) network topology will be implemented with nodes being able to communicate
+        with a minimum of three nodes backwards and forwards for redundancy.\\[0.3cm]
 
         \hline
 
@@ -198,13 +233,106 @@ A bill of materials of single device should exceed 250 ZAR.
 
 \section{Power Supply Subsystem}
 
+\begin{center}
+  \begin{table}[!htb]
+    %\caption{Definition of desired detactable fault conditions}
+    
+    \hskip-2.2cm\begin{tabular}{|p{10cm}|p{4cm}|p{4cm}|}
+        \hline
+        \textbf{Specification} & \textbf{Data} & \textbf{Interface} \\
+        \hline
+        Must be able to supply the needed power to all the sub-systems & Rated Power & Analogue outputs to uC for supply voltage \\[0.3cm]
+        Disconnect power to unused sub-systems & Pre-programmed microcontroller instructions & Wireless and uC sub-systems\\[0.3cm]
+        At least one backup supply is needed & Rated Power & Power supply rails\\[0.3cm]
+        Should be able to withstand extreme conditions i.e. fire, thunderstorms, heat waves etc. & None & Exterior hardware\\[0.3cm]
+        Should not be too big. The weight of the component is important & Specified final dimensions & None\\[0.3cm]
+        Supply the correct voltages to the microcontroller and sensors & Rated voltages & None\\[0.3cm]
+        Inexpensive materials to be used & Total BOM budget & None\\[0.3cm]
+        Simple materials are to be used to ease repairs and maintenance & None & None \\[0.3cm]
+
+        \hline
+
+    \end{tabular}    
+    
+    \label{tab:summary_measurments}
+   \end{table}
+\end{center}
+
 \newpage
 \section{Acceptance Test Procedures}
 
 \newpage
 \section{Minutes of Meetings}
+\subsection{Meeting 1: 14 February 2020}
+14 February 2020, 12:00, NEB Foyer
 
+\textbf{Present}\\
+Torsten Babl, Yashiv Fakir, Jason Hillebrand, Samuel Mbiya, Adam Gild, Yong Hao Chen, Ebrahim Allie
+
+\textbf{Excused}\\
+Lindokuhle Lubisi, Iviwe Malotana
+
+\textbf{Topics}
+\paragraph[short]{1.} Torsten Babl elected as group leader.
+\paragraph[short]{2.} Subsections allocated as follows:
+
+Power: Yashiv, Yong
+
+Micro-controller:	Ebrahim, Adam
+
+Wireless:	Samuel,	Torsten
+
+Sensing: Jason, Iviwe (Assigned as was not present at meeting)
+  
+Unasigned: Lindokuhle
+
+\paragraph[short]{3.} Communication and work space for project decided upon. Each person is responisble for their own education to be able to use the tools that will be used in the project they are not familiar with. A channel will be set up in Microsoft teams to help anyone struggling.  
+Microsoft Teams to be used for all project communication to streamline communication.
+Github repsitory to be used to house all project work.
+Project to be typed and compiled in LaTeX document in the Git repository.
 \newpage
+
+\subsection{Meeting 2: 21 February 2020}
+21 February 2020, 13:00, NEB Foyer
+
+\textbf{Present}\\
+Torsten Babl, Yashiv Fakir, Jason Hillebrand, Samuel Mbiya, Adam Gild, Iviwe Malotana, Lindokuhle Lubisi
+
+\textbf{Excused}\\
+Yong Hao, Ebrahim Allie
+
+\textbf{Topics}
+\paragraph[short]{1.} General design decisions taken:\\
+Sensing subsystem:
+\begin{itemize}
+  \item Accelerometer
+  \item Magnetometer
+  \item Gyroscope
+  \item Thermometer
+  \item Power supply voltage
+\end{itemize}
+
+Micro-controller:
+\begin{itemize}
+  \item Have low power mode
+  \item Communicate using I2C and/or SPI
+  \item Low sampling rate required
+\end{itemize}
+
+Power supply:
+\begin{itemize}
+  \item Induce current from the transmission lines to charge a battery
+  \item Subsystems to draw power directly from battery
+\end{itemize}
+
+\paragraph[short]{2.} Write up:\\
+Each sub-team is to complete their respective sections of the write up.
+Subsections to be submitted by the 23rd of February at 14h00.
+
+\paragraph[short]{3.} General acceptance tests:\\
+All to contribute to acceptance test section. Use a potential fault that the system is to detect and state the
+systems response to this.
+
 %\bibliographystyle{plain}
 %\bibliography{biblist}
 
