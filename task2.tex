@@ -127,8 +127,24 @@ The following faults must be detectable:
         \hline
         \textbf{Fault No.} & \textbf{Fault Name} & \textbf{Detailed Description} & \textbf{Illustration} \\
         \hline
-        One & Two & Three & Four \\
-        \hline
+        F01 & Phase failure & Loss  of  energy  of  one  or  more  lines  due  to  faults
+        between the node and the supply. & - \\\hline
+
+        F02 & Line detachment & One or more lines are detached from the isolator on the A-frame while the pole remains
+        upright. & - \\\hline
+
+        F03 & Pole dislodgment and/or rotation & Pole is no longer upright or loses orientation through forces on the
+        lines or pole itself. & - \\\hline
+
+        F00 & Strong Impact to pole & An unusually strong impact to the pole is observed. & - \\\hline
+
+        F00 & Sudden movement & The top of the pole is still upright and oriented as before but has moved out of
+        position. i.e. Top segment of pole is suspended by the lines. & - \\\hline
+        %Don't like these two
+        F04 & Possible structural fatigue of pole & The structure of the pole is compromised due to material fatigue. & - \\\hline
+
+        F06 & Pole and node failure due to damaging force & A damaging force is strong enough to damage both the pole
+        and the node. & - \\\hline
   
     \end{tabular}    
   
@@ -142,10 +158,17 @@ The following faults must be detectable:
     
     \hskip-2.2cm\begin{tabular}{|p{3cm}|p{2cm}|p{4cm}|p{9cm}|}
         \hline
-        \textbf{Requirement Category} & \textbf{Req. No.} & \textbf{Requirements Name} & \textbf{Detailed Description} \\
+        \textbf{Requirement Category} & \textbf{Req. No.} & \textbf{Requirement Name} & \textbf{Detailed Description} \\
         \hline
-        One & Two & Three & Four \\
-        \hline
+        One & R00 & Reporting time & A detected fault must be reported within 10 minutes of the incident \\\hline
+        One & R00 & Product lifespan & 90\% of deployed devices must still be functional after 10 years of installation \\\hline
+        %Add BOM to list of definitions
+        One & R00 & Device cost & The BOM cost of a single device should not exceed 250 ZAR \\\hline
+        One & R00 & Additional infrastructure & If any additional infrastructure is needed it should not add significantly
+        to the cost of rollout \\\hline
+        %Add ISM band to list of Definitions
+        One & R00 & Communication bands & All wireless communications should use ISM bands permitted in South Africa
+        to ease certification and decrease cost. \\\hline
   
     \end{tabular}    
   
